@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c70vab8tf4ya8"]
+
+[ext_resource type="Texture2D" uid="uid://bv1w5dkfqerhi" path="res://assets/ui/arrow.png" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://cn2cam2ghth0l" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="Texture2D" uid="uid://bajwwhd1yd0fc" path="res://assets/ui/inventory bar.png" id="3_jyhfs"]
+
+[node name="Main" type="Node2D" unique_id=1856284505]
+script = ExtResource("1_sugp2")
+
+[node name="CurrentRoom" type="Node2D" parent="." unique_id=2002690090]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1635911460]
+
+[node name="LeftArrow" type="TextureButton" parent="CanvasLayer" unique_id=993564571]
+offset_left = 25.0
+offset_top = 335.0
+offset_right = 1116.0
+offset_bottom = 1197.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("1_o5qli")
+ignore_texture_size = true
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="RightArrow" type="TextureButton" parent="CanvasLayer" unique_id=1837605211]
+offset_left = 655.0
+offset_top = 374.0
+offset_right = 1746.0
+offset_bottom = 1236.0
+rotation = 3.1415927
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(545.5, 43.5)
+texture_normal = ExtResource("1_o5qli")
+ignore_texture_size = true
+stretch_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="InventoryBar" type="TextureRect" parent="CanvasLayer" unique_id=317074780]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 1258.0
+offset_bottom = 206.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_jyhfs")
+metadata/_edit_lock_ = true
+
+[node name="Items" type="HBoxContainer" parent="CanvasLayer/InventoryBar" unique_id=2046271689]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.112
+offset_left = 74.0
+offset_top = 26.0
+offset_right = 1077.344
+offset_bottom = 152.0
+
+[node name="Slot1" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1650899937]
+layout_mode = 2
+
+[node name="Slot2" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=936758892]
+layout_mode = 2
+
+[node name="Slot3" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1950696120]
+layout_mode = 2
+
+[node name="Slot4" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=584436840]
+layout_mode = 2
+
+[node name="Slot5" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1389018244]
+layout_mode = 2
+
+[node name="Slot6" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1798159461]
+layout_mode = 2
+
+[node name="Slot7" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1649582721]
+layout_mode = 2
+
+[node name="Slot8" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1925532980]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="CanvasLayer/RightArrow" to="." method="_on_right_arrow_pressed"]

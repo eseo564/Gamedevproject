@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dwxdq8o5yu7rd"]
+
+[ext_resource type="Texture2D" uid="uid://cgxbco126u5bu" path="res://assets/backgrounds/room1/room1_start.png" id="1_mcdrj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcxn1"]
+size = Vector2(150, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7vj"]
+size = Vector2(189, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i1wd"]
+size = Vector2(208, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4uan"]
+size = Vector2(98, 58)
+
+[node name="Room1" type="Node2D" unique_id=1901223854]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1354551709]
+position = Vector2(640, 361)
+texture = ExtResource("1_mcdrj")
+metadata/_edit_lock_ = true
+
+[node name="Interactables" type="Node2D" parent="." unique_id=854492124]
+
+[node name="Bucket" type="Area2D" parent="Interactables" unique_id=766648487]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bucket" unique_id=1781989742]
+position = Vector2(419, 486)
+shape = SubResource("RectangleShape2D_pcxn1")
+metadata/_edit_lock_ = true
+
+[node name="Cheese" type="Area2D" parent="Interactables" unique_id=1169558186]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Cheese" unique_id=645462761]
+position = Vector2(684.5, 593.5)
+shape = SubResource("RectangleShape2D_ic7vj")
+metadata/_edit_lock_ = true
+
+[node name="Web" type="Area2D" parent="Interactables" unique_id=838574336]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Web" unique_id=1533152633]
+position = Vector2(510, 143)
+shape = SubResource("RectangleShape2D_1i1wd")
+
+[node name="Matches" type="Area2D" parent="Interactables" unique_id=786760384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Matches" unique_id=1124723378]
+position = Vector2(1033, 506)
+shape = SubResource("RectangleShape2D_m4uan")

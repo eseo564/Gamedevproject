@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://u7g6a46g03pf"]
+
+[ext_resource type="Script" uid="uid://dgcclogikucrn" path="res://scripts/rooms/room3.gd" id="1_dk4yb"]
+[ext_resource type="Texture2D" uid="uid://6ua833c52obr" path="res://assets/backgrounds/room3/room3_start.png" id="1_qv21c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7vj"]
+size = Vector2(67, 102)
+
+[node name="Room3" type="Node2D" unique_id=1682538416]
+script = ExtResource("1_dk4yb")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1017312441]
+position = Vector2(640, 360)
+texture = ExtResource("1_qv21c")
+metadata/_edit_lock_ = true
+
+[node name="Interactables" type="Node2D" parent="." unique_id=503161595]
+
+[node name="Door" type="Area2D" parent="Interactables" unique_id=1397999994]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Door" unique_id=1527159346]
+position = Vector2(389.5, 348)
+shape = SubResource("RectangleShape2D_ic7vj")
+metadata/_edit_lock_ = true
+
+[node name="Sewer" type="Area2D" parent="Interactables" unique_id=1112986403]
+
+[node name="ColisionPolygon2D" type="CollisionPolygon2D" parent="Interactables/Sewer" unique_id=1736947763]
+polygon = PackedVector2Array(350, 591, 448, 597, 500, 615, 519, 634, 519, 649, 489, 674, 418, 692, 304, 692, 226, 669, 210, 651, 210, 636, 240, 613, 302, 594, 349, 591)
+metadata/_edit_lock_ = true
+
+[node name="Toolbox" type="Area2D" parent="Interactables" unique_id=1942559635]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interactables/Toolbox" unique_id=1637510715]
+polygon = PackedVector2Array(836, 531, 1138, 512, 1191, 524, 1192, 656, 902, 695, 839, 670)
+metadata/_edit_lock_ = true

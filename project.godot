@@ -11,10 +11,19 @@ config_version=5
 [application]
 
 config/name="Game Dev Project"
+run/main_scene="uid://c70vab8tf4ya8"
 config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+Inventory="*uid://cl5h4oude7vcp"
+GameManager="*uid://dkvmnnpm2fbb7"
+Dialogue="*uid://dvarg5bwwbi8v"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

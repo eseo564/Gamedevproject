@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cdwyr12oru14w"]
+
+[ext_resource type="Script" uid="uid://c278eufyuiafn" path="res://scripts/rooms/room2.gd" id="1_4w0uv"]
+[ext_resource type="Texture2D" uid="uid://b2ka3jinwvahw" path="res://assets/backgrounds/room2/room2_start.png" id="1_s5msr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4uan"]
+radius = 47.0
+height = 142.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcxn1"]
+size = Vector2(146, 266)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7vj"]
+size = Vector2(430, 154.86273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i1wd"]
+size = Vector2(149, 195)
+
+[node name="Room2" type="Node2D" unique_id=1875352060]
+script = ExtResource("1_4w0uv")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1930608795]
+position = Vector2(640, 360)
+texture = ExtResource("1_s5msr")
+metadata/_edit_lock_ = true
+
+[node name="Interactables" type="Node2D" parent="." unique_id=186303206]
+
+[node name="RatHole" type="Area2D" parent="Interactables" unique_id=1040683300]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/RatHole" unique_id=1392769947]
+position = Vector2(693, 592)
+shape = SubResource("CapsuleShape2D_m4uan")
+metadata/_edit_lock_ = true
+
+[node name="Bucket" type="Area2D" parent="Interactables" unique_id=1713738598]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bucket" unique_id=255070676]
+position = Vector2(199, 563)
+shape = SubResource("RectangleShape2D_pcxn1")
+metadata/_edit_lock_ = true
+
+[node name="WallCode" type="Area2D" parent="Interactables" unique_id=940579761]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallCode" unique_id=1321675985]
+position = Vector2(489.54898, 401.58493)
+rotation = -0.26179937
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_ic7vj")
+metadata/_edit_lock_ = true
+
+[node name="Safe" type="Area2D" parent="Interactables" unique_id=104061782]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Safe" unique_id=199543351]
+position = Vector2(1065, 559)
+shape = SubResource("RectangleShape2D_1i1wd")
+metadata/_edit_lock_ = true
