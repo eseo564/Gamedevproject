@@ -33,9 +33,9 @@ position = Vector2(693, 592)
 shape = SubResource("CapsuleShape2D_m4uan")
 metadata/_edit_lock_ = true
 
-[node name="Bucket" type="Area2D" parent="Interactables" unique_id=1713738598]
+[node name="Water" type="Area2D" parent="Interactables" unique_id=1713738598]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bucket" unique_id=255070676]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Water" unique_id=255070676]
 position = Vector2(199, 563)
 shape = SubResource("RectangleShape2D_pcxn1")
 metadata/_edit_lock_ = true

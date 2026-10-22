@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dwxdq8o5yu7rd"]
 
+[ext_resource type="Script" uid="uid://cb3bb68gslyk3" path="res://scripts/rooms/room1.gd" id="1_6bky5"]
 [ext_resource type="Texture2D" uid="uid://cgxbco126u5bu" path="res://assets/backgrounds/room1/room1_start.png" id="1_mcdrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcxn1"]
@@ -15,6 +16,7 @@ size = Vector2(208, 152)
 size = Vector2(98, 58)
 
 [node name="Room1" type="Node2D" unique_id=1901223854]
+script = ExtResource("1_6bky5")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1354551709]
 position = Vector2(640, 361)

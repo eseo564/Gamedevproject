@@ -36,9 +36,9 @@ stretch_mode = 3
 metadata/_edit_lock_ = true
 
 [node name="InventoryBar" type="TextureRect" parent="CanvasLayer" unique_id=317074780]
-offset_left = 20.0
+offset_left = 640.0
 offset_top = 20.0
-offset_right = 1258.0
+offset_right = 1878.0
 offset_bottom = 206.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_jyhfs")
@@ -52,6 +52,7 @@ offset_left = 74.0
 offset_top = 26.0
 offset_right = 1077.344
 offset_bottom = 152.0
+metadata/_edit_lock_ = true
 
 [node name="Slot1" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1650899937]
 layout_mode = 2
