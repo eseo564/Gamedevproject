@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5er3tyvwse81"
-path="res://.godot/imported/Title_Page.png-3e5cb81450b06abfe7569d0360c06414.ctex"
+uid="uid://ct65gupdncdxs"
+path="res://.godot/imported/Title_art.png-ffd0f6ca42418c3d6d039b0280669d39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GF/Title_Page.png"
-dest_files=["res://.godot/imported/Title_Page.png-3e5cb81450b06abfe7569d0360c06414.ctex"]
+source_file="res://assets/GF/Title_art.png"
+dest_files=["res://.godot/imported/Title_art.png-ffd0f6ca42418c3d6d039b0280669d39.ctex"]
 
 [params]
 

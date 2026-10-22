@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://dq84vojqgn1cw"]
 
 [ext_resource type="Script" uid="uid://dsf1vwhn02tat" path="res://scenes/title.gd" id="1_ascc0"]
+[ext_resource type="Texture2D" uid="uid://ct65gupdncdxs" path="res://assets/GF/Title_art.png" id="2_lq0lj"]
 
 [node name="Title screen" type="Node2D" unique_id=96680326]
 script = ExtResource("1_ascc0")
+
+[node name="TitleArt" type="Sprite2D" parent="." unique_id=79044341]
+position = Vector2(642, 360)
+texture = ExtResource("2_lq0lj")
 
 [node name="Button Manager" type="Control" parent="." unique_id=883148176]
 layout_mode = 3
