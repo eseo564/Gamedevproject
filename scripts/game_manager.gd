@@ -1,11 +1,29 @@
 extends Node
 
+# Room 1
+var bucket_acquired = false
+var cheese_acquired = false
+var matches_acquired = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var web_burned = false
+var web_interactions = 0
 
+# Room 2
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var rat_hole_interactions = 0
+var rat_removed = false
+
+var bucket_filled = false
+
+var safe_opened = false
+var wall_code_discovered = false
+
+# Room 3
+
+var padlock_dial_attached = false
+var toolbox_opened = false
+var sewer_opened = false
+
+# Toilet Room
+
+var toilet_flushed = false

@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://c70vab8tf4ya8"]
 
-[ext_resource type="Texture2D" uid="uid://bv1w5dkfqerhi" path="res://assets/ui/arrow.png" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://s18vv1vpdbo6" path="res://assets/UI/arrow.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://cn2cam2ghth0l" path="res://scripts/main.gd" id="1_sugp2"]
-[ext_resource type="Texture2D" uid="uid://bajwwhd1yd0fc" path="res://assets/ui/inventory bar.png" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://c1wsarokqvm7o" path="res://assets/UI/inventory bar.png" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://c17rg7vi0krnl" path="res://scripts/inventory/inventory_ui.gd" id="4_jyhfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic7vj"]
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.8352941, 0.2901961, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Main" type="Node2D" unique_id=1856284505]
 script = ExtResource("1_sugp2")
@@ -44,39 +57,223 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_jyhfs")
 metadata/_edit_lock_ = true
 
-[node name="Items" type="HBoxContainer" parent="CanvasLayer/InventoryBar" unique_id=2046271689]
+[node name="Items" type="Control" parent="CanvasLayer/InventoryBar" unique_id=827932440]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.112
+anchor_right = 0.016
+anchor_bottom = 0.215
 offset_left = 74.0
-offset_top = 26.0
-offset_right = 1077.344
-offset_bottom = 152.0
-metadata/_edit_lock_ = true
+offset_top = 14.0
+offset_right = 1200.192
+offset_bottom = 120.009995
+script = ExtResource("4_jyhfs")
 
-[node name="Slot1" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1650899937]
-layout_mode = 2
+[node name="Slot1" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=177110233]
+layout_mode = 1
+anchor_top = 0.102000006
+anchor_right = 0.11400001
+anchor_bottom = 0.93200004
+offset_left = -4.0
+offset_top = -10.892001
+offset_right = 7.3559875
+offset_bottom = 5.927994
 
-[node name="Slot2" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=936758892]
-layout_mode = 2
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot1" unique_id=34491040]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
 
-[node name="Slot3" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1950696120]
-layout_mode = 2
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot1" unique_id=1650899937]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 132.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Slot4" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=584436840]
-layout_mode = 2
+[node name="Slot2" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=379660363]
+anchors_preset = 0
+offset_left = 142.0
+offset_top = 4.0
+offset_right = 284.0
+offset_bottom = 146.0
 
-[node name="Slot5" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1389018244]
-layout_mode = 2
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot2" unique_id=810384021]
+visible = false
+layout_mode = 0
+offset_right = 142.0
+offset_bottom = 138.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
 
-[node name="Slot6" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1798159461]
-layout_mode = 2
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot2" unique_id=1974893990]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 132.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Slot7" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1649582721]
-layout_mode = 2
+[node name="Slot3" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=1849211961]
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 2.0
+offset_right = 432.0
+offset_bottom = 146.0
 
-[node name="Slot8" type="TextureRect" parent="CanvasLayer/InventoryBar/Items" unique_id=1925532980]
-layout_mode = 2
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot3" unique_id=1908253719]
+visible = false
+layout_mode = 0
+offset_top = 2.0
+offset_right = 142.0
+offset_bottom = 140.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot3" unique_id=1725594722]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 136.0
+offset_bottom = 134.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=219631968]
+anchors_preset = 0
+offset_left = 434.0
+offset_top = 4.0
+offset_right = 578.0
+offset_bottom = 146.0
+
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot4" unique_id=954123112]
+visible = false
+layout_mode = 0
+offset_right = 142.0
+offset_bottom = 138.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot4" unique_id=958678245]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 132.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot5" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=61718268]
+anchors_preset = 0
+offset_left = 582.0
+offset_top = 2.0
+offset_right = 720.0
+offset_bottom = 142.0
+
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot5" unique_id=850141122]
+visible = false
+layout_mode = 0
+offset_top = 2.0
+offset_right = 138.0
+offset_bottom = 140.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot5" unique_id=155379816]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 134.0
+offset_bottom = 134.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot6" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=791481586]
+anchors_preset = 0
+offset_left = 724.0
+offset_top = 4.0
+offset_right = 866.0
+offset_bottom = 144.0
+
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot6" unique_id=10739434]
+visible = false
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 138.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot6" unique_id=1822116980]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 134.0
+offset_bottom = 132.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot7" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=43403537]
+anchors_preset = 0
+offset_left = 868.0
+offset_top = 2.0
+offset_right = 1004.0
+offset_bottom = 146.0
+
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot7" unique_id=1296506767]
+visible = false
+layout_mode = 0
+offset_right = 134.0
+offset_bottom = 140.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot7" unique_id=523244446]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 130.0
+offset_bottom = 132.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot8" type="Control" parent="CanvasLayer/InventoryBar/Items" unique_id=740308610]
+anchors_preset = 0
+offset_left = 1006.0
+offset_right = 1146.0
+offset_bottom = 146.0
+
+[node name="Selection" type="Panel" parent="CanvasLayer/InventoryBar/Items/Slot8" unique_id=109371624]
+visible = false
+layout_mode = 0
+offset_top = 2.0
+offset_right = 138.0
+offset_bottom = 142.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic7vj")
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/InventoryBar/Items/Slot8" unique_id=630021161]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 132.0
+offset_bottom = 134.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="CanvasLayer/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="CanvasLayer/RightArrow" to="." method="_on_right_arrow_pressed"]

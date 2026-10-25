@@ -11,6 +11,13 @@ var current_room_index = 0
 
 
 func _ready():
+	$CanvasLayer/LeftArrow.pressed.connect(_on_left_arrow_pressed)
+	$CanvasLayer/RightArrow.pressed.connect(_on_right_arrow_pressed)
+
+	# TEMPORARY INVENTORY TEST
+	Inventory.add_item("bucket")
+	Inventory.add_item("matches")
+	Inventory.add_item("cheese")
 	load_room()
 
 
