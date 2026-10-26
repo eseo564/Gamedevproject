@@ -23,6 +23,7 @@ offset_left = 138.0
 offset_top = 537.0
 offset_right = 286.0
 offset_bottom = 582.0
+mouse_default_cursor_shape = 2
 text = "Start
 "
 
@@ -32,6 +33,7 @@ offset_left = 408.0
 offset_top = 537.0
 offset_right = 556.0
 offset_bottom = 582.0
+mouse_default_cursor_shape = 2
 text = "Exit"
 
 [connection signal="pressed" from="Button Manager/Start" to="." method="_on_start_pressed"]

@@ -3,14 +3,14 @@ extends Control
 
 var item_textures = {
 	"bucket": preload("res://assets/items/bucket.png"),
-	"filled_water_bucket": preload("res://assets/items/cheese.png"),
-	"matches": preload("res://assets/items/crowbar.png"),
-	"stick": preload("res://assets/items/key.png"),
-	"cheese": preload("res://assets/items/match.png"),
+	"filled_water_bucket": preload("res://assets/items/water_bucket.png"),
+	"matches": preload("res://assets/items/match.png"),
+	"stick": preload("res://assets/items/stick.png"),
+	"cheese": preload("res://assets/items/cheese.png"),
 	"padlock_dial": preload("res://assets/items/padlockdial.png"),
-	"key": preload("res://assets/items/stick.png"),
+	"key": preload("res://assets/items/key.png"),
 	"uv_light": preload("res://assets/items/UV_light.png"),
-	"crowbar": preload("res://assets/items/water_bucket.png")
+	"crowbar": preload("res://assets/items/crowbar.png")
 }
 
 
@@ -27,6 +27,7 @@ func _ready():
 func update_inventory():
 	var slots = get_children()
 
+	# Reset every slot
 	for slot in slots:
 		var icon = slot.get_node("Icon")
 		var selection = slot.get_node("Selection")
@@ -34,6 +35,11 @@ func update_inventory():
 		icon.texture = null
 		selection.hide()
 
+		# Empty slots use normal cursor
+		slot.mouse_default_cursor_shape = Control.CURSOR_ARROW
+
+
+	# Fill slots with owned items
 	for i in range(min(Inventory.items.size(), slots.size())):
 		var item_name = Inventory.items[i]
 		var slot = slots[i]
@@ -43,6 +49,10 @@ func update_inventory():
 		if item_textures.has(item_name):
 			icon.texture = item_textures[item_name]
 
+			# Owned item uses pointing-hand cursor
+			slot.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+		# Show selection highlight
 		if Inventory.is_selected(item_name):
 			selection.show()
 
