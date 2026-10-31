@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c70vab8tf4ya8"]
 
-[ext_resource type="Texture2D" uid="uid://s18vv1vpdbo6" path="res://assets/UI/arrow.png" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://bv1w5dkfqerhi" path="res://assets/UI/arrow.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://cn2cam2ghth0l" path="res://scripts/main.gd" id="1_sugp2"]
-[ext_resource type="Texture2D" uid="uid://c1wsarokqvm7o" path="res://assets/UI/inventory bar.png" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://bajwwhd1yd0fc" path="res://assets/UI/inventory bar.png" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://c17rg7vi0krnl" path="res://scripts/inventory/inventory_ui.gd" id="4_jyhfs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic7vj"]
@@ -274,6 +274,61 @@ offset_bottom = 134.0
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="PadlockUI" type="Panel" parent="CanvasLayer" unique_id=217763041]
+visible = false
+offset_left = 390.0
+offset_top = 235.0
+offset_right = 890.0
+offset_bottom = 485.0
+
+[node name="Digit1" type="Button" parent="CanvasLayer/PadlockUI" unique_id=1289628544]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 50.0
+offset_right = 155.0
+offset_bottom = 130.0
+text = "0"
+
+[node name="Digit2" type="Button" parent="CanvasLayer/PadlockUI" unique_id=1087905729]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 50.0
+offset_right = 245.0
+offset_bottom = 130.0
+text = "0"
+
+[node name="Digit3" type="Button" parent="CanvasLayer/PadlockUI" unique_id=714895188]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 50.0
+offset_right = 335.0
+offset_bottom = 130.0
+text = "0"
+
+[node name="Digit4" type="Button" parent="CanvasLayer/PadlockUI" unique_id=1069570083]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 50.0
+offset_right = 425.0
+offset_bottom = 130.0
+text = "0"
+
+[node name="EnterButton" type="Button" parent="CanvasLayer/PadlockUI" unique_id=174692182]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 160.0
+offset_right = 235.0
+offset_bottom = 205.0
+text = "ENTER"
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/PadlockUI" unique_id=1988920074]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 160.0
+offset_right = 385.0
+offset_bottom = 205.0
+text = "CLOSE"
 
 [connection signal="pressed" from="CanvasLayer/LeftArrow" to="." method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="CanvasLayer/RightArrow" to="." method="_on_right_arrow_pressed"]

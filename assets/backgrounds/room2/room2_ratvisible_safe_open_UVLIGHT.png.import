@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c68ihp3jwupy2"
-path="res://.godot/imported/toiletroom_key_collected.png-fe28c6881833cf9a61e19b8bb6b38758.ctex"
+uid="uid://digm4w1pwfihh"
+path="res://.godot/imported/room2_ratvisible_safe_open_UVLIGHT.png-a363960fc79052a5d6fdb1bdd03d4f8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/tolietroom/toiletroom_key_collected.png"
-dest_files=["res://.godot/imported/toiletroom_key_collected.png-fe28c6881833cf9a61e19b8bb6b38758.ctex"]
+source_file="res://assets/backgrounds/room2/room2_ratvisible_safe_open_UVLIGHT.png"
+dest_files=["res://.godot/imported/room2_ratvisible_safe_open_UVLIGHT.png-a363960fc79052a5d6fdb1bdd03d4f8c.ctex"]
 
 [params]
 

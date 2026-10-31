@@ -3,11 +3,13 @@ extends Node
 var rooms = [
 	preload("res://scenes/rooms/room1.tscn"),
 	preload("res://scenes/rooms/room2.tscn"),
-	preload("res://scenes/rooms/room3.tscn")
+	preload("res://scenes/rooms/room3.tscn"),
+	preload("res://scenes/rooms/toiletroom.tscn")
+
 ]
 
 var current_room_index = 0
-
+var padlock_digits = [0, 0, 0, 0]
 
 func _ready():
 	$CanvasLayer/LeftArrow.pressed.connect(_on_left_arrow_pressed)
@@ -15,6 +17,15 @@ func _ready():
 
 	$CanvasLayer/LeftArrow.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	$CanvasLayer/RightArrow.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	
+	$CanvasLayer/PadlockUI/Digit1.pressed.connect(_on_digit_pressed.bind(0))
+	$CanvasLayer/PadlockUI/Digit2.pressed.connect(_on_digit_pressed.bind(1))
+	$CanvasLayer/PadlockUI/Digit3.pressed.connect(_on_digit_pressed.bind(2))
+	$CanvasLayer/PadlockUI/Digit4.pressed.connect(_on_digit_pressed.bind(3))
+	$CanvasLayer/PadlockUI/EnterButton.pressed.connect(_on_padlock_enter)
+	$CanvasLayer/PadlockUI/CloseButton.pressed.connect(hide_padlock)
+
+	$CanvasLayer/PadlockUI.hide()
 	
 	load_room()
 
@@ -65,5 +76,37 @@ func _on_left_arrow_pressed():
 		current_room_index = rooms.size() - 1
 
 	load_room()
+	
+func show_padlock():
+	padlock_digits = [0, 0, 0, 0]
+	update_padlock_display()
+	$CanvasLayer/PadlockUI.show()
+
+
+func hide_padlock():
+	$CanvasLayer/PadlockUI.hide()
+
+
+func _on_digit_pressed(index):
+	padlock_digits[index] += 1
+
+	if padlock_digits[index] > 9:
+		padlock_digits[index] = 0
+
+	update_padlock_display()
+
+
+func update_padlock_display():
+	$CanvasLayer/PadlockUI/Digit1.text = str(padlock_digits[0])
+	$CanvasLayer/PadlockUI/Digit2.text = str(padlock_digits[1])
+	$CanvasLayer/PadlockUI/Digit3.text = str(padlock_digits[2])
+	$CanvasLayer/PadlockUI/Digit4.text = str(padlock_digits[3])
+
+
+func _on_padlock_enter():
+	if padlock_digits == [1, 9, 8, 3]:
+		GameManager.toolbox_opened = true
+		hide_padlock()
+		load_room()
 	
 	

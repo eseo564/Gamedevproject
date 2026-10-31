@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx0sr48dxqm1t"
-path="res://.godot/imported/toiletroom_key_flushed.png-c278f26b671132063a90e319feff9727.ctex"
+uid="uid://dffie0kesfgjf"
+path="res://.godot/imported/toiletroom_start.png-e0d8cfcc02b5c018f6d516260270f2b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/tolietroom/toiletroom_key_flushed.png"
-dest_files=["res://.godot/imported/toiletroom_key_flushed.png-c278f26b671132063a90e319feff9727.ctex"]
+source_file="res://assets/backgrounds/toiletroom/toiletroom_start.png"
+dest_files=["res://.godot/imported/toiletroom_start.png-e0d8cfcc02b5c018f6d516260270f2b9.ctex"]
 
 [params]
 

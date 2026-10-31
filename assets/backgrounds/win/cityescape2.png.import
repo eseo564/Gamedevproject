@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di7alk7cli7ev"
-path="res://.godot/imported/basement_3_og.webp-9a089af4a44bd3411ff7bfb8da00c618.ctex"
+uid="uid://5yh1es38rg24"
+path="res://.godot/imported/cityescape2.png-626f9cabe525a2db6302acef01b03667.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/basement_3_og.webp"
-dest_files=["res://.godot/imported/basement_3_og.webp-9a089af4a44bd3411ff7bfb8da00c618.ctex"]
+source_file="res://assets/backgrounds/win/cityescape2.png"
+dest_files=["res://.godot/imported/cityescape2.png-626f9cabe525a2db6302acef01b03667.ctex"]
 
 [params]
 

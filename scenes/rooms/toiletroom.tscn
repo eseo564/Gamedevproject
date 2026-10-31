@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccxhf0e0k32rd"]
 
-[ext_resource type="Texture2D" uid="uid://dffie0kesfgjf" path="res://assets/backgrounds/tolietroom/toiletroom_start.png" id="1_81rvn"]
+[ext_resource type="Texture2D" uid="uid://dffie0kesfgjf" path="res://assets/backgrounds/toiletroom/toiletroom_start.png" id="1_81rvn"]
 [ext_resource type="Script" uid="uid://c0m6d2lk03bbh" path="res://scripts/rooms/tolietroom.gd" id="1_qhhaj"]
 
 [node name="Tolietroom" type="Node2D" unique_id=709075675]

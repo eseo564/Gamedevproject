@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://h3pbjege8iw6"]
+
+[ext_resource type="Script" uid="uid://dlfwka8n5ls6l" path="res://scripts/win.gd" id="1_826fv"]
+[ext_resource type="Texture2D" uid="uid://bc6dmrj6wjq2n" path="res://assets/backgrounds/win/cityescape.png" id="1_r4oei"]
+
+[node name="Win" type="Node2D" unique_id=1911075959]
+script = ExtResource("1_826fv")
+
+[node name="Background" type="TextureRect" parent="." unique_id=49913642]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_r4oei")

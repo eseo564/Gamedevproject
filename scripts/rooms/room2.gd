@@ -12,10 +12,15 @@ var bg_bucket = preload("res://assets/backgrounds/room2/room2_bucket.png")
 var bg_bucket_filled = preload("res://assets/backgrounds/room2/room2_bucket_filled.png")
 var bg_bucket_filled_no_rat = preload("res://assets/backgrounds/room2/room2_bucket_filled_no_rat.png")
 var bg_bucket_no_rat = preload("res://assets/backgrounds/room2/room2_bucket_no_rat.png")
-var bg_safe_opened = preload("res://assets/backgrounds/room2/room2_safe_opened.png")
-var bg_uv_collected = preload("res://assets/backgrounds/room2/room2_UV_collected.png")
-var bg_wall_code = preload("res://assets/backgrounds/room2/room2_wall_code.png")
 
+var bg_safe_opened = preload("res://assets/backgrounds/room2/room2_safe_opened.png")
+var bg_safe_opened_rat = preload("res://assets/backgrounds/room2/room2_ratvisible_safe_open.png")
+
+var bg_uv_collected = preload("res://assets/backgrounds/room2/room2_UV_collected.png")
+var bg_safe_opened_rat_uv = preload("res://assets/backgrounds/room2/room2_ratvisible_safe_open_UVLIGHT.png")
+
+var bg_wall_code = preload("res://assets/backgrounds/room2/room2_wall_code.png")
+var bg_wall_code_rat = preload("res://assets/backgrounds/room2/room2_wall_code_ratvisible.png")
 
 func _ready():
 	safe.input_event.connect(_on_safe_clicked)
@@ -23,6 +28,7 @@ func _ready():
 	water.input_event.connect(_on_water_clicked)
 	rat_hole.input_event.connect(_on_rat_hole_clicked)
 
+	check_bucket_fill()
 	update_room()
 
 
@@ -74,13 +80,38 @@ func interact_with_wall_code():
 
 
 func interact_with_water():
+	if GameManager.bucket_filled:
+		Inventory.add_item("filled_water_bucket")
+		GameManager.bucket_placed = false
+		GameManager.bucket_filled = false
+		update_room()
+		return
+
 	if GameManager.bucket_placed:
 		return
 
 	if Inventory.selected_item == "bucket":
 		GameManager.bucket_placed = true
+		GameManager.bucket_fill_start_time = Time.get_ticks_msec()
 		Inventory.remove_item("bucket")
 		update_room()
+
+
+func _process(_delta):
+	if GameManager.bucket_placed and not GameManager.bucket_filled:
+		var elapsed = Time.get_ticks_msec() - GameManager.bucket_fill_start_time
+
+		if elapsed >= 5000:
+			GameManager.bucket_filled = true
+			update_room()
+
+
+func check_bucket_fill():
+	if GameManager.bucket_placed and not GameManager.bucket_filled:
+		var elapsed = Time.get_ticks_msec() - GameManager.bucket_fill_start_time
+
+		if elapsed >= 5000:
+			GameManager.bucket_filled = true
 
 
 func interact_with_rat_hole():
@@ -95,11 +126,20 @@ func interact_with_rat_hole():
 
 
 func update_room():
-	if GameManager.wall_code_discovered:
+	if GameManager.wall_code_discovered and not GameManager.rat_removed:
+		background.texture = bg_wall_code_rat
+
+	elif GameManager.wall_code_discovered:
 		background.texture = bg_wall_code
+
+	elif GameManager.uv_light_acquired and not GameManager.rat_removed:
+		background.texture = bg_safe_opened_rat
 
 	elif GameManager.uv_light_acquired:
 		background.texture = bg_uv_collected
+
+	elif GameManager.safe_opened and not GameManager.rat_removed:
+		background.texture = bg_safe_opened_rat_uv
 
 	elif GameManager.safe_opened:
 		background.texture = bg_safe_opened
