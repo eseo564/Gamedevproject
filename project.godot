@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 Inventory="*uid://cl5h4oude7vcp"
 GameManager="*uid://dkvmnnpm2fbb7"
 Dialogue="*uid://dvarg5bwwbi8v"
+DialogueOveraly="*uid://xqstl6jhtyj5"
 
 [display]
 
