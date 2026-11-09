@@ -5,7 +5,9 @@ var bucket_acquired = false
 var cheese_acquired = false
 var matches_acquired = false
 var stick_acquired = false
-var web_burned = false
+var web_burned = false 
+var web_clicks = 0 
+var cheese_clicks = 0
 
 # Room 2
 var rat_removed = false

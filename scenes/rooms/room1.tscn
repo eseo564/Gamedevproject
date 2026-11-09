@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cb3bb68gslyk3" path="res://scripts/rooms/room1.gd" id="1_6bky5"]
 [ext_resource type="Texture2D" uid="uid://cgxbco126u5bu" path="res://assets/backgrounds/room1/room1_start.png" id="1_mcdrj"]
+[ext_resource type="Texture2D" uid="uid://vke7l1amgr3q" path="res://assets/creatures/spider.png" id="3_hu6fl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcxn1"]
 size = Vector2(150, 130)
@@ -50,3 +51,10 @@ shape = SubResource("RectangleShape2D_1i1wd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Matches" unique_id=1124723378]
 position = Vector2(1033, 506)
 shape = SubResource("RectangleShape2D_m4uan")
+
+[node name="Spider" type="Sprite2D" parent="." unique_id=1145872880]
+visible = false
+position = Vector2(589, 284)
+rotation = 0.668461
+scale = Vector2(2.6596131, 2.845727)
+texture = ExtResource("3_hu6fl")
