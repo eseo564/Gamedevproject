@@ -62,8 +62,8 @@ func interact_with_bucket():
 	if GameManager.bucket_acquired:
 		return 
 		
-	await Dialogue.show_text("A bucket")
-	await Dialogue.show_text("Maybe I can use this for something")
+	await Dialogue.show_text("A bucket.")
+	await Dialogue.show_text("Maybe I can use this for something...")
 	GameManager.bucket_acquired = true
 	Inventory.add_item("bucket")
 
@@ -86,12 +86,12 @@ func interact_with_cheese():
 	GameManager.cheese_clicks += 1
 
 	if GameManager.cheese_clicks == 1:
-		await Dialogue.show_text("Weird way to set a mouse trap")
+		await Dialogue.show_text("Weird way to set a mouse trap.")
 		await Dialogue.show_text("And the cheese is molded...")
 		await Dialogue.show_text("Gross.")
 	else:
-		await Dialogue.show_text("I wouldn't want that to snap my fingers")
-		await Dialogue.show_text("There has to be another way around this")
+		await Dialogue.show_text("I wouldn't want that to snap my fingers!")
+		await Dialogue.show_text("There has to be another way around this...")
 
 
 func interact_with_web():
@@ -115,17 +115,17 @@ func interact_with_web():
 	GameManager.web_clicks += 1
 
 	if GameManager.web_clicks == 1:
-		await Dialogue.show_text("I hate spiders")
-		await Dialogue.show_text("But there's something behind that web")
+		await Dialogue.show_text("I hate spiders!")
+		await Dialogue.show_text("But there's something behind that web...")
 	elif GameManager.web_clicks == 2:
 		play_spider_jumpscare()
 		await Dialogue.show_text("Ah!")
 		spider_slide_away()
 		await Dialogue.show_text("Shoo! shoo!")
-		await Dialogue.show_text("There has to be some other way to remove that spider web")
+		await Dialogue.show_text("There has to be some other way to remove that spider web!")
 	else:
-		await Dialogue.show_text("I'm not touching that")
-		await Dialogue.show_text("There has to be another way")
+		await Dialogue.show_text("I'm not touching that!")
+		await Dialogue.show_text("There has to be another way.")
 
 func play_spider_jumpscare():
 	spider.position = spider_start_pos
@@ -148,8 +148,8 @@ func interact_with_matches():
 	if GameManager.matches_acquired:
 		return
 		
-	await Dialogue.show_text("There's a singular match in here")
-	await Dialogue.show_text("Might come in use")
+	await Dialogue.show_text("There's a singular match in here.")
+	await Dialogue.show_text("Might come in use...")
 	GameManager.matches_acquired = true
 	Inventory.add_item("matches")
 
