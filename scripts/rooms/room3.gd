@@ -46,6 +46,7 @@ func interact_with_toolbox():
 	if GameManager.toolbox_opened:
 		if not GameManager.crowbar_acquired:
 			GameManager.crowbar_acquired = true
+			await Dialogue.show_text("A crowbar?")
 			Inventory.add_item("crowbar")
 			update_room()
 		return
@@ -58,17 +59,36 @@ func interact_with_toolbox():
 		GameManager.padlock_dial_attached = true
 		Inventory.remove_item("padlock_dial")
 		update_room()
+		await Dialogue.show_text("I fixed it!")
+		await Dialogue.show_text("But I have no clue what the code is...")
+		return
+
+	if Inventory.selected_item != "":
+		await Dialogue.wrong_item()
+		return
+
+	await Dialogue.show_text("A locked toolbox")
+	await Dialogue.show_text("There seems to be a padlock, but it's missing its dial")
 
 
 func interact_with_sewer():
 	if GameManager.sewer_opened:
+		await Dialogue.show_text("I hope this works!")
 		get_tree().change_scene_to_file("res://scenes/win.tscn")
 		return
 
 	if Inventory.selected_item == "crowbar":
 		GameManager.sewer_opened = true
-		Inventory.remove_item("crowbar")
 		update_room()
+		await Dialogue.show_text("Yes, it opened!")
+		await Dialogue.show_text("I've got to get out of here before she arrives!")
+		return
+
+	if Inventory.selected_item != "":
+		await Dialogue.wrong_item()
+		return
+
+	await Dialogue.show_text("Weird, a basement with a manhole")
 
 
 func update_room():

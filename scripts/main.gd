@@ -31,6 +31,8 @@ func _ready():
 
 
 func load_room():
+	$CanvasLayer/PadlockUI.hide()
+
 	# Remove current room
 	for room in $CurrentRoom.get_children():
 		room.queue_free()
@@ -108,5 +110,7 @@ func _on_padlock_enter():
 		GameManager.toolbox_opened = true
 		hide_padlock()
 		load_room()
+	else:
+		await Dialogue.show_text("Well that didn't work.")
 	
 	
