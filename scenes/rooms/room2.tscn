@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c278eufyuiafn" path="res://scripts/rooms/room2.gd" id="1_4w0uv"]
 [ext_resource type="Texture2D" uid="uid://b2ka3jinwvahw" path="res://assets/backgrounds/room2/room2_start.png" id="1_s5msr"]
+[ext_resource type="AudioStream" uid="uid://bvkq4j15q6c0j" path="res://assets/SFX/mouse_sfx.mp3" id="3_aok5s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m4uan"]
 radius = 47.0
@@ -55,3 +56,6 @@ metadata/_edit_lock_ = true
 position = Vector2(1065, 559)
 shape = SubResource("RectangleShape2D_1i1wd")
 metadata/_edit_lock_ = true
+
+[node name="MouseSfx" type="AudioStreamPlayer" parent="." unique_id=2070446428]
+stream = ExtResource("3_aok5s")

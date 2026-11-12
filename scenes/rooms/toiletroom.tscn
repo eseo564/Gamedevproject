@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dffie0kesfgjf" path="res://assets/backgrounds/toiletroom/toiletroom_start.png" id="1_81rvn"]
 [ext_resource type="Script" uid="uid://c0m6d2lk03bbh" path="res://scripts/rooms/tolietroom.gd" id="1_qhhaj"]
+[ext_resource type="AudioStream" uid="uid://lqeh4xx0yi7y" path="res://assets/SFX/toilet_flush.mp3" id="3_nvp1v"]
 
 [node name="Tolietroom" type="Node2D" unique_id=709075675]
 script = ExtResource("1_qhhaj")
@@ -16,3 +17,8 @@ texture = ExtResource("1_81rvn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interactables/Toilet" unique_id=122891283]
 polygon = PackedVector2Array(444, 604, 613, 512, 667, 498, 748, 508, 784, 531, 788, 581, 675, 687, 562, 698, 480, 673, 443, 643)
+
+[node name="FlushSfx" type="AudioStreamPlayer" parent="." unique_id=1181104610]
+stream = ExtResource("3_nvp1v")
+volume_db = -9.237
+pitch_scale = 2.0

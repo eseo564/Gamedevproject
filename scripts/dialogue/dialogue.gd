@@ -27,7 +27,7 @@ func show_text(text: String):
 
 
 func _type_text(text: String):
-	revealing = true
+	revealing = true 
 
 	# Loop through the total character count from left to right
 	for i in range(1, text.length() + 1):
@@ -39,6 +39,8 @@ func _type_text(text: String):
 	label.visible_ratio = 1.0  # Instantly show all text if skipped
 	revealing = false
 
+func wrong_item():
+	await show_text("I don't think I can use this here..")
 
 func _input(event):
 	if not (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
@@ -51,4 +53,4 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 		waiting_for_click = false
 		box.hide()
-		finished.emit()
+		finished.emit() 

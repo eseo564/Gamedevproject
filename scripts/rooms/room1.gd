@@ -7,7 +7,8 @@ extends Node2D
 @onready var background = $Background 
 
 # setting spider jumpscare
-@onready var spider = $Spider
+@onready var spider = $Spider 
+@onready var spider_sfx = $SpiderSfx
 var spider_final_scale = Vector2.ONE
 var spider_start_pos = Vector2.ZERO
 
@@ -81,6 +82,10 @@ func interact_with_cheese():
 		Inventory.add_item("cheese")
 
 		update_room()
+		return 
+		
+	if Inventory.selected_item != "":
+		await Dialogue.wrong_item()
 		return
 
 	GameManager.cheese_clicks += 1
@@ -110,6 +115,10 @@ func interact_with_web():
 		Inventory.remove_item("matches")
 		Inventory.clear_selection()
 		update_room()
+		return 
+	
+	if Inventory.selected_item != "":
+		await Dialogue.wrong_item()
 		return
 
 	GameManager.web_clicks += 1
@@ -131,15 +140,20 @@ func play_spider_jumpscare():
 	spider.position = spider_start_pos
 	spider.scale = Vector2(0.05, 0.05)
 	spider.show()
-	var tween = create_tween()
+	spider_sfx.play()
+
+	var tween = create_tween().set_parallel(true)
 	tween.tween_property(spider, "scale", spider_final_scale, 0.15).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(background, "modulate", Color(0.3, 0.3, 0.3), 0.15)
 	await tween.finished
 
 
 func spider_slide_away():
 	var off_screen_x = -spider.texture.get_width() * spider_final_scale.x
-	var tween = create_tween()
+
+	var tween = create_tween().set_parallel(true)
 	tween.tween_property(spider, "position:x", off_screen_x, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.tween_property(background, "modulate", Color.WHITE, 0.25)
 	await tween.finished
 	spider.hide()
 

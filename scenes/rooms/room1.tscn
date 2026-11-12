@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cb3bb68gslyk3" path="res://scripts/rooms/room1.gd" id="1_6bky5"]
 [ext_resource type="Texture2D" uid="uid://cgxbco126u5bu" path="res://assets/backgrounds/room1/room1_start.png" id="1_mcdrj"]
 [ext_resource type="Texture2D" uid="uid://vke7l1amgr3q" path="res://assets/creatures/spider.png" id="3_hu6fl"]
+[ext_resource type="AudioStream" uid="uid://bm6g2b2dhtluu" path="res://assets/SFX/spider_sfx.mp3" id="4_0yqos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pcxn1"]
 size = Vector2(150, 130)
@@ -58,3 +59,6 @@ position = Vector2(589, 284)
 rotation = 0.668461
 scale = Vector2(2.6596131, 2.845727)
 texture = ExtResource("3_hu6fl")
+
+[node name="SpiderSfx" type="AudioStreamPlayer" parent="." unique_id=2137099093]
+stream = ExtResource("4_0yqos")
