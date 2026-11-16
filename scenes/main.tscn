@@ -2,8 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://bv1w5dkfqerhi" path="res://assets/UI/arrow.png" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://cn2cam2ghth0l" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="Shader" uid="uid://cd8jaw0a3vxoo" path="res://shaders/main.gdshader" id="2_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://bajwwhd1yd0fc" path="res://assets/UI/inventory bar.png" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://c17rg7vi0krnl" path="res://scripts/inventory/inventory_ui.gd" id="4_jyhfs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqhgv"]
+shader = ExtResource("2_tbgi4")
+shader_parameter/glow_color = Color(1, 0.85, 0, 1)
+shader_parameter/glow_size = 20.0000009025
+shader_parameter/glow_strength = 0.400000019
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pokml"]
+shader = ExtResource("2_tbgi4")
+shader_parameter/glow_color = Color(1, 0.85, 0, 1)
+shader_parameter/glow_size = 20.0000009025
+shader_parameter/glow_strength = 0.400000019
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic7vj"]
 draw_center = false
@@ -25,6 +38,7 @@ script = ExtResource("1_sugp2")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1635911460]
 
 [node name="LeftArrow" type="TextureButton" parent="CanvasLayer" unique_id=993564571]
+material = SubResource("ShaderMaterial_jqhgv")
 offset_left = 25.0
 offset_top = 335.0
 offset_right = 1116.0
@@ -33,9 +47,9 @@ scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("1_o5qli")
 ignore_texture_size = true
 stretch_mode = 3
-metadata/_edit_lock_ = true
 
 [node name="RightArrow" type="TextureButton" parent="CanvasLayer" unique_id=1837605211]
+material = SubResource("ShaderMaterial_pokml")
 offset_left = 655.0
 offset_top = 374.0
 offset_right = 1746.0

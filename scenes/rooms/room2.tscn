@@ -30,13 +30,21 @@ metadata/_edit_lock_ = true
 [node name="RatHole" type="Area2D" parent="Interactables" unique_id=1040683300]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/RatHole" unique_id=1392769947]
+visible = false
 position = Vector2(693, 592)
 shape = SubResource("CapsuleShape2D_m4uan")
 metadata/_edit_lock_ = true
 
+[node name="Glow" type="Polygon2D" parent="Interactables/RatHole" unique_id=59888389]
+polygon = PackedVector2Array(670, 614, 670, 603, 677, 592, 689, 585, 697, 584, 708, 588, 718, 594, 721, 604, 720, 611, 714, 621, 706, 629, 693, 630, 682, 631, 670, 619)
+
+[node name="Outline" type="Line2D" parent="Interactables/RatHole/Glow" unique_id=75795504]
+position = Vector2(199, 563)
+
 [node name="Water" type="Area2D" parent="Interactables" unique_id=1713738598]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Water" unique_id=255070676]
+visible = false
 position = Vector2(199, 563)
 shape = SubResource("RectangleShape2D_pcxn1")
 metadata/_edit_lock_ = true
@@ -44,6 +52,7 @@ metadata/_edit_lock_ = true
 [node name="WallCode" type="Area2D" parent="Interactables" unique_id=940579761]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/WallCode" unique_id=1321675985]
+visible = false
 position = Vector2(489.54898, 401.58493)
 rotation = -0.26179937
 scale = Vector2(0.9999998, 0.9999998)
@@ -52,7 +61,20 @@ metadata/_edit_lock_ = true
 
 [node name="Safe" type="Area2D" parent="Interactables" unique_id=104061782]
 
+[node name="Glow" type="Polygon2D" parent="Interactables/Safe" unique_id=705258209]
+visible = false
+position = Vector2(1065, 559)
+polygon = PackedVector2Array(-72, -91, 74, -93, 76, 89, -72, 92)
+
+[node name="Outline" type="Line2D" parent="Interactables/Safe/Glow" unique_id=1810869578]
+
+[node name="FlashlightGlow" type="Polygon2D" parent="Interactables/Safe" unique_id=836558728]
+polygon = PackedVector2Array(1039, 554, 1052, 559, 1082, 559, 1085, 565, 1083, 574, 1081, 578, 1054, 577, 1047, 582, 1036, 582, 1029, 573, 1029, 560)
+
+[node name="Outline" type="Line2D" parent="Interactables/Safe/FlashlightGlow" unique_id=2019060210]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Safe" unique_id=199543351]
+visible = false
 position = Vector2(1065, 559)
 shape = SubResource("RectangleShape2D_1i1wd")
 metadata/_edit_lock_ = true

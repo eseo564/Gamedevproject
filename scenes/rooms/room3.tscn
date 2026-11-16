@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgcclogikucrn" path="res://scripts/rooms/room3.gd" id="1_dk4yb"]
 [ext_resource type="Texture2D" uid="uid://6ua833c52obr" path="res://assets/backgrounds/room3/room3_start.png" id="1_qv21c"]
+[ext_resource type="Texture2D" uid="uid://blt8dnx0lkhl5" path="res://assets/backgrounds/room3/room3_toolbox_opened.png" id="3_u63ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic7vj"]
 size = Vector2(67, 102)
@@ -26,11 +27,37 @@ metadata/_edit_lock_ = true
 [node name="Sewer" type="Area2D" parent="Interactables" unique_id=1112986403]
 
 [node name="ColisionPolygon2D" type="CollisionPolygon2D" parent="Interactables/Sewer" unique_id=1736947763]
+visible = false
 polygon = PackedVector2Array(350, 591, 448, 597, 500, 615, 519, 634, 519, 649, 489, 674, 418, 692, 304, 692, 226, 669, 210, 651, 210, 636, 240, 613, 302, 594, 349, 591)
 metadata/_edit_lock_ = true
+
+[node name="SewerGlowClosed" type="Polygon2D" parent="Interactables/Sewer" unique_id=1606121910]
+polygon = PackedVector2Array(276, 598, 316, 591, 371, 588, 426, 592, 480, 602, 512, 619, 522, 637, 516, 656, 486, 675, 431, 691, 365, 696, 289, 691, 232, 673, 210, 655, 210, 635, 230, 615)
+
+[node name="Outline" type="Line2D" parent="Interactables/Sewer/SewerGlowClosed" unique_id=229127042]
+
+[node name="SewerGlowOpened" type="Polygon2D" parent="Interactables/Sewer" unique_id=870789516]
+polygon = PackedVector2Array(502, 674, 518, 661, 518, 640, 499, 614, 457, 598, 407, 588, 336, 585, 260, 595, 214, 618, 211, 643, 221, 666, 230, 674, 208, 690, 204, 706, 212, 719, 237, 758, 500, 761, 503, 721, 518, 707, 515, 687)
+
+[node name="Outline" type="Line2D" parent="Interactables/Sewer/SewerGlowOpened" unique_id=1603008307]
 
 [node name="Toolbox" type="Area2D" parent="Interactables" unique_id=1942559635]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Interactables/Toolbox" unique_id=1637510715]
+visible = false
 polygon = PackedVector2Array(836, 531, 1138, 512, 1191, 524, 1192, 656, 902, 695, 839, 670)
 metadata/_edit_lock_ = true
+
+[node name="PadLockGlow" type="Polygon2D" parent="Interactables/Toolbox" unique_id=12648857]
+polygon = PackedVector2Array(1038, 574, 1038, 591, 1049, 598, 1062, 595, 1070, 581, 1065, 566, 1061, 550, 1049, 546, 1042, 554, 1042, 567)
+
+[node name="Outline" type="Line2D" parent="Interactables/Toolbox/PadLockGlow" unique_id=1266005922]
+
+[node name="CrowbarGlow" type="Polygon2D" parent="Interactables/Toolbox" unique_id=2017247750]
+polygon = PackedVector2Array(1002, 566, 952, 545, 922, 555, 910, 550, 916, 527, 946, 530, 984, 539, 1036, 563)
+
+[node name="Outline" type="Line2D" parent="Interactables/Toolbox/CrowbarGlow" unique_id=1028984984]
+
+[node name="Room3ToolboxOpened" type="Sprite2D" parent="." unique_id=714903470]
+position = Vector2(640, 360)
+texture = ExtResource("3_u63ts")

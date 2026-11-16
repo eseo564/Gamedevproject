@@ -5,6 +5,11 @@ extends Node2D
 @onready var toolbox = $Interactables/Toolbox
 @onready var sewer = $Interactables/Sewer
 
+@onready var sewer_glow_closed = $Interactables/Sewer/SewerGlowClosed
+@onready var sewer_glow_opened = $Interactables/Sewer/SewerGlowOpened
+@onready var padlock_glow = $Interactables/Toolbox/PadLockGlow
+@onready var crowbar_glow = $Interactables/Toolbox/CrowbarGlow
+
 var bg_start = preload("res://assets/backgrounds/room3/room3_start.png")
 var bg_padlock_complete = preload("res://assets/backgrounds/room3/room3_padlock_complete.png")
 var bg_toolbox_opened = preload("res://assets/backgrounds/room3/room3_toolbox_opened.png")
@@ -16,6 +21,11 @@ func _ready():
 	door.input_event.connect(_on_door_clicked)
 	toolbox.input_event.connect(_on_toolbox_clicked)
 	sewer.input_event.connect(_on_sewer_clicked)
+
+	setup_glow(sewer_glow_closed)
+	setup_glow(sewer_glow_opened)
+	setup_glow(padlock_glow)
+	setup_glow(crowbar_glow)
 
 	update_room()
 
@@ -91,6 +101,25 @@ func interact_with_sewer():
 	await Dialogue.show_text("Weird, a basement with a manhole")
 
 
+func setup_glow(glow):
+	var outline = glow.get_node_or_null("Outline")
+
+	if outline == null:
+		push_error("Missing Outline under " + glow.name)
+		return
+
+	glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	glow.z_index = 10
+
+	outline.position = Vector2.ZERO
+	outline.points = glow.polygon
+	outline.closed = true
+	outline.width = 3.0
+	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.antialiased = true
+	outline.visible = true
+
+
 func update_room():
 	if GameManager.sewer_opened:
 		background.texture = bg_sewers_opened
@@ -106,3 +135,9 @@ func update_room():
 
 	else:
 		background.texture = bg_start
+
+	sewer_glow_closed.visible = not GameManager.sewer_opened
+	sewer_glow_opened.visible = GameManager.sewer_opened
+
+	padlock_glow.visible = not GameManager.toolbox_opened
+	crowbar_glow.visible = GameManager.toolbox_opened and not GameManager.crowbar_acquired

@@ -30,28 +30,54 @@ metadata/_edit_lock_ = true
 [node name="Bucket" type="Area2D" parent="Interactables" unique_id=766648487]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Bucket" unique_id=1781989742]
+visible = false
 position = Vector2(419, 486)
 shape = SubResource("RectangleShape2D_pcxn1")
 metadata/_edit_lock_ = true
 
+[node name="Glow" type="Polygon2D" parent="Interactables/Bucket" unique_id=302439768]
+polygon = PackedVector2Array(415, 419, 443, 435, 467, 446, 479, 450, 489, 461, 491, 476, 491, 495, 488, 514, 478, 528, 417, 542, 406, 547, 395, 547, 393, 552, 391, 553, 358, 553, 354, 550, 353, 543, 354, 539, 348, 533, 346, 531, 346, 510, 350, 497, 353, 483, 357, 479, 364, 478, 366, 466, 370, 452, 379, 436, 389, 426, 399, 420, 409, 418)
+
+[node name="Outline" type="Line2D" parent="Interactables/Bucket/Glow" unique_id=200984089]
+
 [node name="Cheese" type="Area2D" parent="Interactables" unique_id=1169558186]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Cheese" unique_id=645462761]
+visible = false
 position = Vector2(684.5, 593.5)
 shape = SubResource("RectangleShape2D_ic7vj")
 metadata/_edit_lock_ = true
 
+[node name="Glow" type="Polygon2D" parent="Interactables/Cheese" unique_id=1377817340]
+polygon = PackedVector2Array(672, 591, 712, 583, 712, 544, 695, 534, 670, 534, 653, 536, 643, 543, 643, 558, 648, 578, 671, 591)
+
+[node name="Outline" type="Line2D" parent="Interactables/Cheese/Glow" unique_id=1653107207]
+
 [node name="Web" type="Area2D" parent="Interactables" unique_id=838574336]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Web" unique_id=1533152633]
+visible = false
 position = Vector2(510, 143)
 shape = SubResource("RectangleShape2D_1i1wd")
+metadata/_edit_lock_ = true
+
+[node name="Glow" type="Polygon2D" parent="Interactables/Web" unique_id=1228725993]
+polygon = PackedVector2Array(468, 176, 577, 92, 582, 98, 472, 183, 469, 186, 464, 178)
+
+[node name="Outline" type="Line2D" parent="Interactables/Web/Glow" unique_id=749365745]
 
 [node name="Matches" type="Area2D" parent="Interactables" unique_id=786760384]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Matches" unique_id=1124723378]
+visible = false
 position = Vector2(1033, 506)
 shape = SubResource("RectangleShape2D_m4uan")
+metadata/_edit_lock_ = true
+
+[node name="Glow" type="Polygon2D" parent="Interactables/Matches" unique_id=433787962]
+polygon = PackedVector2Array(1010, 527, 1076, 538, 1082, 522, 1077, 492, 1007, 480, 995, 492, 982, 485, 979, 488, 980, 492, 990, 498, 984, 505, 988, 520)
+
+[node name="Outline" type="Line2D" parent="Interactables/Matches/Glow" unique_id=1105228821]
 
 [node name="Spider" type="Sprite2D" parent="." unique_id=1145872880]
 visible = false

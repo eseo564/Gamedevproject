@@ -4,7 +4,12 @@ extends Node2D
 @onready var cheese = $Interactables/Cheese
 @onready var web = $Interactables/Web
 @onready var matches = $Interactables/Matches
-@onready var background = $Background 
+@onready var background = $Background
+
+@onready var bucket_glow = $Interactables/Bucket/Glow
+@onready var matches_glow = $Interactables/Matches/Glow
+@onready var web_glow = $Interactables/Web/Glow
+@onready var cheese_glow = $Interactables/Cheese/Glow 
 
 # setting spider jumpscare
 @onready var spider = $Spider 
@@ -31,6 +36,11 @@ func _ready():
 	# setting spider jumpscare
 	spider_final_scale = spider.scale
 	spider_start_pos = spider.position
+	
+	setup_glow(bucket_glow)
+	setup_glow(matches_glow)
+	setup_glow(web_glow)
+	setup_glow(cheese_glow)
 
 	update_room()
 
@@ -169,6 +179,16 @@ func interact_with_matches():
 
 	update_room()
 
+func setup_glow(glow):
+	glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	glow.z_index = 1
+
+	var outline = glow.get_node("Outline")
+	outline.points = glow.polygon
+	outline.closed = true
+	outline.width = 3.0
+	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.antialiased = true
 
 func update_room():
 	if GameManager.cheese_acquired and GameManager.bucket_acquired:
@@ -205,3 +225,7 @@ func update_room():
 	matches.visible = not GameManager.matches_acquired
 	cheese.visible = not GameManager.cheese_acquired
 	web.visible = not GameManager.stick_acquired
+	bucket_glow.visible = not GameManager.bucket_acquired
+	matches_glow.visible = not GameManager.matches_acquired
+	web_glow.visible = not GameManager.stick_acquired
+	cheese_glow.visible = not GameManager.cheese_acquired

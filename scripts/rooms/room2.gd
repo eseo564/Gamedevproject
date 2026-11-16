@@ -6,6 +6,10 @@ extends Node2D
 @onready var water = $Interactables/Water
 @onready var rat_hole = $Interactables/RatHole
 
+@onready var safe_glow = $Interactables/Safe/Glow
+@onready var flashlight_glow = $Interactables/Safe/FlashlightGlow
+@onready var rat_glow = $Interactables/RatHole/Glow
+
 var bg_start = preload("res://assets/backgrounds/room2/room2_start.png")
 var bg_no_rat = preload("res://assets/backgrounds/room2/room2_no_rat_no_bucket.png")
 var bg_bucket = preload("res://assets/backgrounds/room2/room2_bucket.png")
@@ -45,6 +49,10 @@ func _ready():
 	bite_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	flash_layer.add_child(bite_flash)
 	bite_flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	
+	setup_glow(safe_glow)
+	setup_glow(flashlight_glow)
+	setup_glow(rat_glow)
 
 	check_bucket_fill()
 	update_room()
@@ -218,6 +226,18 @@ func interact_with_rat_hole():
 		await Dialogue.show_text("Wouldn't want to risk getting infected.")
 		await Dialogue.show_text("If I haven't already...")
 
+func setup_glow(glow):
+	glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	glow.z_index = 10
+
+	var outline = glow.get_node("Outline")
+	outline.position = Vector2.ZERO
+	outline.points = glow.polygon
+	outline.closed = true
+	outline.width = 3.0
+	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.antialiased = true
+	outline.visible = true
 
 func update_room():
 	if GameManager.wall_code_discovered and not GameManager.rat_removed:
@@ -255,3 +275,8 @@ func update_room():
 
 	else:
 		background.texture = bg_start
+
+	safe_glow.visible = not GameManager.safe_opened
+	flashlight_glow.visible = GameManager.safe_opened and not GameManager.uv_light_acquired
+	rat_glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	rat_glow.visible = not GameManager.rat_removed
