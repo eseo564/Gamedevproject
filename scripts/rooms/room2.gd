@@ -1,3 +1,4 @@
+
 extends Node2D
 
 @onready var background = $Background
@@ -9,6 +10,9 @@ extends Node2D
 @onready var safe_glow = $Interactables/Safe/Glow
 @onready var flashlight_glow = $Interactables/Safe/FlashlightGlow
 @onready var rat_glow = $Interactables/RatHole/Glow
+@onready var water_glow = $Interactables/Water/Glow
+
+@onready var mouse_sfx = $MouseSfx
 
 var bg_start = preload("res://assets/backgrounds/room2/room2_start.png")
 var bg_no_rat = preload("res://assets/backgrounds/room2/room2_no_rat_no_bucket.png")
@@ -25,8 +29,7 @@ var bg_safe_opened_rat_uv = preload("res://assets/backgrounds/room2/room2_ratvis
 
 var bg_wall_code = preload("res://assets/backgrounds/room2/room2_wall_code.png")
 var bg_wall_code_rat = preload("res://assets/backgrounds/room2/room2_wall_code_ratvisible.png")
- 
-@onready var mouse_sfx = $MouseSfx
+
 var bite_flash: ColorRect
 var room_origin = Vector2.ZERO
 
@@ -35,9 +38,8 @@ func _ready():
 	safe.input_event.connect(_on_safe_clicked)
 	wall_code.input_event.connect(_on_wall_code_clicked)
 	water.input_event.connect(_on_water_clicked)
-	rat_hole.input_event.connect(_on_rat_hole_clicked) 
-	
-	# Add Mouse Bite Effect
+	rat_hole.input_event.connect(_on_rat_hole_clicked)
+
 	room_origin = position
 
 	var flash_layer = CanvasLayer.new()
@@ -49,13 +51,24 @@ func _ready():
 	bite_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	flash_layer.add_child(bite_flash)
 	bite_flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	
+
 	setup_glow(safe_glow)
 	setup_glow(flashlight_glow)
 	setup_glow(rat_glow)
+	setup_glow(water_glow)
+
+	safe.mouse_entered.connect(_on_safe_hover_entered)
+	safe.mouse_exited.connect(_on_safe_hover_exited)
+
+	rat_hole.mouse_entered.connect(_on_rat_hover_entered)
+	rat_hole.mouse_exited.connect(_on_rat_hover_exited)
+
+	water.mouse_entered.connect(_on_water_hover_entered)
+	water.mouse_exited.connect(_on_water_hover_exited)
 
 	check_bucket_fill()
 	update_room()
+
 
 func play_bite_effect():
 	mouse_sfx.play()
@@ -68,8 +81,10 @@ func play_bite_effect():
 	for i in range(8):
 		var offset = Vector2(randf_range(-8, 8), randf_range(-8, 8))
 		shake_tween.tween_property(self, "position", room_origin + offset, 0.04)
+
 	shake_tween.tween_property(self, "position", room_origin, 0.04)
 	await shake_tween.finished
+
 
 func _on_safe_clicked(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
@@ -202,7 +217,7 @@ func interact_with_rat_hole():
 		await Dialogue.show_text("I know you want this cheese!")
 		GameManager.rat_removed = true
 		Inventory.remove_item("cheese")
-		update_room() 
+		update_room()
 		await Dialogue.show_text("There, let's see what's in here...")
 		Inventory.add_item("padlock_dial")
 		await Dialogue.show_text("A padlock dial?")
@@ -226,18 +241,54 @@ func interact_with_rat_hole():
 		await Dialogue.show_text("Wouldn't want to risk getting infected.")
 		await Dialogue.show_text("If I haven't already...")
 
+
 func setup_glow(glow):
-	glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	var outline = glow.get_node_or_null("Outline")
+
+	if outline == null:
+		push_error("Missing Outline under " + glow.name)
+		return
+
+	glow.color = Color(1.0, 1.0, 1.0, 0.0)
 	glow.z_index = 10
 
-	var outline = glow.get_node("Outline")
 	outline.position = Vector2.ZERO
 	outline.points = glow.polygon
 	outline.closed = true
 	outline.width = 3.0
-	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.default_color = Color(1.0, 1.0, 1.0, 0.3)
 	outline.antialiased = true
 	outline.visible = true
+
+
+func _on_safe_hover_entered():
+	if not GameManager.safe_opened:
+		safe_glow.show()
+	elif not GameManager.uv_light_acquired:
+		flashlight_glow.show()
+
+
+func _on_safe_hover_exited():
+	safe_glow.hide()
+	flashlight_glow.hide()
+
+
+func _on_rat_hover_entered():
+	if not GameManager.rat_removed:
+		rat_glow.show()
+
+
+func _on_rat_hover_exited():
+	rat_glow.hide()
+
+
+func _on_water_hover_entered():
+	water_glow.show()
+
+
+func _on_water_hover_exited():
+	water_glow.hide()
+
 
 func update_room():
 	if GameManager.wall_code_discovered and not GameManager.rat_removed:
@@ -276,7 +327,7 @@ func update_room():
 	else:
 		background.texture = bg_start
 
-	safe_glow.visible = not GameManager.safe_opened
-	flashlight_glow.visible = GameManager.safe_opened and not GameManager.uv_light_acquired
-	rat_glow.color = Color(1.0, 0.85, 0.0, 0.0)
-	rat_glow.visible = not GameManager.rat_removed
+	safe_glow.hide()
+	flashlight_glow.hide()
+	rat_glow.hide()
+	water_glow.hide()

@@ -19,11 +19,6 @@ texture = ExtResource("1_81rvn")
 visible = false
 polygon = PackedVector2Array(444, 604, 613, 512, 667, 498, 748, 508, 784, 531, 788, 581, 675, 687, 562, 698, 480, 673, 443, 643)
 
-[node name="SparkleGlow" type="Polygon2D" parent="Interactables/Toilet" unique_id=1403985012]
-polygon = PackedVector2Array(611, 621, 619, 622, 627, 612, 626, 625, 636, 631, 636, 634, 625, 631, 617, 639, 615, 639, 617, 630)
-
-[node name="Outline" type="Line2D" parent="Interactables/Toilet/SparkleGlow" unique_id=1708154927]
-
 [node name="KeyGlow" type="Polygon2D" parent="Interactables/Toilet" unique_id=442185082]
 polygon = PackedVector2Array(662, 564, 667, 588, 685, 583, 680, 568, 730, 554, 735, 562, 743, 565, 751, 564, 757, 557, 758, 546, 752, 534, 746, 528, 733, 529, 726, 536, 728, 546)
 

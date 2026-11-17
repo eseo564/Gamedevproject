@@ -27,6 +27,11 @@ func _ready():
 	setup_glow(padlock_glow)
 	setup_glow(crowbar_glow)
 
+	toolbox.mouse_entered.connect(_on_toolbox_hover_entered)
+	toolbox.mouse_exited.connect(_on_toolbox_hover_exited)
+
+	sewer.mouse_entered.connect(_on_sewer_hover_entered)
+	sewer.mouse_exited.connect(_on_sewer_hover_exited)
 	update_room()
 
 
@@ -108,16 +113,44 @@ func setup_glow(glow):
 		push_error("Missing Outline under " + glow.name)
 		return
 
-	glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	glow.color = Color(1.0, 1.0, 1.0, 0.0)
 	glow.z_index = 10
 
 	outline.position = Vector2.ZERO
 	outline.points = glow.polygon
 	outline.closed = true
 	outline.width = 3.0
-	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.default_color = Color(1.0, 1.0, 1.0, 0.3)
 	outline.antialiased = true
 	outline.visible = true
+
+
+func update_hover_glow(glow, hovered, available):
+	glow.visible = hovered and available
+
+
+func _on_toolbox_hover_entered():
+	if not GameManager.toolbox_opened:
+		padlock_glow.show()
+	elif not GameManager.crowbar_acquired:
+		crowbar_glow.show()
+
+
+func _on_toolbox_hover_exited():
+	padlock_glow.hide()
+	crowbar_glow.hide()
+
+
+func _on_sewer_hover_entered():
+	if GameManager.sewer_opened:
+		sewer_glow_opened.show()
+	else:
+		sewer_glow_closed.show()
+
+
+func _on_sewer_hover_exited():
+	sewer_glow_closed.hide()
+	sewer_glow_opened.hide()
 
 
 func update_room():
@@ -136,8 +169,7 @@ func update_room():
 	else:
 		background.texture = bg_start
 
-	sewer_glow_closed.visible = not GameManager.sewer_opened
-	sewer_glow_opened.visible = GameManager.sewer_opened
-
-	padlock_glow.visible = not GameManager.toolbox_opened
-	crowbar_glow.visible = GameManager.toolbox_opened and not GameManager.crowbar_acquired
+	sewer_glow_closed.hide()
+	sewer_glow_opened.hide()
+	padlock_glow.hide()
+	crowbar_glow.hide()

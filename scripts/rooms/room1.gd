@@ -41,6 +41,18 @@ func _ready():
 	setup_glow(matches_glow)
 	setup_glow(web_glow)
 	setup_glow(cheese_glow)
+	
+	bucket.mouse_entered.connect(func(): update_hover_glow(bucket_glow, true, not GameManager.bucket_acquired))
+	bucket.mouse_exited.connect(func(): bucket_glow.hide())
+
+	matches.mouse_entered.connect(func(): update_hover_glow(matches_glow, true, not GameManager.matches_acquired))
+	matches.mouse_exited.connect(func(): matches_glow.hide())
+
+	web.mouse_entered.connect(func(): update_hover_glow(web_glow, true, not GameManager.stick_acquired))
+	web.mouse_exited.connect(func(): web_glow.hide())
+
+	cheese.mouse_entered.connect(func(): update_hover_glow(cheese_glow, true, not GameManager.cheese_acquired))
+	cheese.mouse_exited.connect(func(): cheese_glow.hide())
 
 	update_room()
 
@@ -180,15 +192,27 @@ func interact_with_matches():
 	update_room()
 
 func setup_glow(glow):
-	glow.color = Color(1.0, 0.85, 0.0, 0.0)
-	glow.z_index = 1
+	var outline = glow.get_node_or_null("Outline")
 
-	var outline = glow.get_node("Outline")
+	if outline == null:
+		push_error("Missing Outline under " + glow.name)
+		return
+
+	glow.color = Color(1.0, 1.0, 1.0, 0.0)
+	glow.z_index = 10
+
+	outline.position = Vector2.ZERO
 	outline.points = glow.polygon
 	outline.closed = true
 	outline.width = 3.0
-	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.default_color = Color(1.0, 1.0, 1.0, 0.3)
 	outline.antialiased = true
+	outline.visible = true
+
+
+func update_hover_glow(glow, hovered, available):
+	glow.visible = hovered and available
+
 
 func update_room():
 	if GameManager.cheese_acquired and GameManager.bucket_acquired:
@@ -221,11 +245,7 @@ func update_room():
 	else:
 		background.texture = bg_start
 
-	bucket.visible = not GameManager.bucket_acquired
-	matches.visible = not GameManager.matches_acquired
-	cheese.visible = not GameManager.cheese_acquired
-	web.visible = not GameManager.stick_acquired
-	bucket_glow.visible = not GameManager.bucket_acquired
-	matches_glow.visible = not GameManager.matches_acquired
-	web_glow.visible = not GameManager.stick_acquired
-	cheese_glow.visible = not GameManager.cheese_acquired
+	bucket_glow.hide()
+	matches_glow.hide()
+	web_glow.hide()
+	cheese_glow.hide()

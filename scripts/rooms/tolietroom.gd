@@ -7,16 +7,17 @@ var bg_start = preload("res://assets/backgrounds/toiletroom/toiletroom_start.png
 var bg_key_flushed = preload("res://assets/backgrounds/toiletroom/toiletroom_key_flushed.png")
 var bg_key_collected = preload("res://assets/backgrounds/toiletroom/toiletroom_key_collected.png")
 
-@onready var sparkle_glow = $Interactables/Toilet/SparkleGlow
 @onready var key_glow = $Interactables/Toilet/KeyGlow
-
 @onready var flush_sfx = $FlushSfx
 
 func _ready():
 	toilet.input_event.connect(_on_toilet_clicked)
 	
-	setup_glow(sparkle_glow)
 	setup_glow(key_glow)
+	
+	toilet.mouse_entered.connect(_on_toilet_hover_entered)
+	toilet.mouse_exited.connect(_on_toilet_hover_exited)
+	
 	
 	update_room()
 
@@ -59,17 +60,36 @@ func interact_with_toilet():
 	await Dialogue.show_text("There's something shining in there...")
 
 func setup_glow(glow):
-	glow.color = Color(1.0, 0.85, 0.0, 0.0)
+	var outline = glow.get_node_or_null("Outline")
+
+	if outline == null:
+		push_error("Missing Outline under " + glow.name)
+		return
+
+	glow.color = Color(1.0, 1.0, 1.0, 0.0)
 	glow.z_index = 10
 
-	var outline = glow.get_node("Outline")
 	outline.position = Vector2.ZERO
 	outline.points = glow.polygon
 	outline.closed = true
 	outline.width = 3.0
-	outline.default_color = Color(1.0, 0.85, 0.0, 0.35)
+	outline.default_color = Color(1.0, 1.0, 1.0, 0.3)
 	outline.antialiased = true
 	outline.visible = true
+
+
+func update_hover_glow(glow, hovered, available):
+	glow.visible = hovered and available
+
+
+func _on_toilet_hover_entered():
+	if GameManager.toilet_flushed and not GameManager.key_acquired:
+		key_glow.show()
+
+
+func _on_toilet_hover_exited():
+	key_glow.hide()
+
 
 func update_room():
 	if GameManager.key_acquired:
@@ -81,6 +101,4 @@ func update_room():
 	else:
 		background.texture = bg_start
 		
-	sparkle_glow.visible = not GameManager.toilet_flushed
-	key_glow.visible = GameManager.toilet_flushed and not GameManager.key_acquired
-		
+	key_glow.hide()

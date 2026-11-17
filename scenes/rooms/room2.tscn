@@ -35,11 +35,10 @@ position = Vector2(693, 592)
 shape = SubResource("CapsuleShape2D_m4uan")
 metadata/_edit_lock_ = true
 
-[node name="Glow" type="Polygon2D" parent="Interactables/RatHole" unique_id=59888389]
-polygon = PackedVector2Array(670, 614, 670, 603, 677, 592, 689, 585, 697, 584, 708, 588, 718, 594, 721, 604, 720, 611, 714, 621, 706, 629, 693, 630, 682, 631, 670, 619)
+[node name="Glow" type="Polygon2D" parent="Interactables/RatHole" unique_id=67919208]
+polygon = PackedVector2Array(660, 603, 675, 624, 680, 630, 703, 628, 714, 623, 722, 607, 728, 606, 729, 597, 734, 595, 733, 584, 728, 582, 727, 572, 731, 569, 730, 561, 720, 556, 719, 547, 705, 537, 705, 532, 695, 532, 688, 537, 686, 540, 675, 541, 671, 547, 672, 559, 663, 560, 659, 573, 653, 575, 651, 586, 655, 595)
 
-[node name="Outline" type="Line2D" parent="Interactables/RatHole/Glow" unique_id=75795504]
-position = Vector2(199, 563)
+[node name="Outline" type="Line2D" parent="Interactables/RatHole/Glow" unique_id=406898567]
 
 [node name="Water" type="Area2D" parent="Interactables" unique_id=1713738598]
 
@@ -48,6 +47,11 @@ visible = false
 position = Vector2(199, 563)
 shape = SubResource("RectangleShape2D_pcxn1")
 metadata/_edit_lock_ = true
+
+[node name="Glow" type="Polygon2D" parent="Interactables/Water" unique_id=1325209232]
+polygon = PackedVector2Array(209, 666, 229, 666, 252, 671, 262, 675, 259, 681, 251, 686, 236, 688, 175, 688, 158, 683, 157, 673, 171, 668, 188, 666)
+
+[node name="Outline" type="Line2D" parent="Interactables/Water/Glow" unique_id=2082986184]
 
 [node name="WallCode" type="Area2D" parent="Interactables" unique_id=940579761]
 
