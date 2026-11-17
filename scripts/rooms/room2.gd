@@ -243,22 +243,7 @@ func interact_with_rat_hole():
 
 
 func setup_glow(glow):
-	var outline = glow.get_node_or_null("Outline")
-
-	if outline == null:
-		push_error("Missing Outline under " + glow.name)
-		return
-
-	glow.color = Color(1.0, 1.0, 1.0, 0.0)
-	glow.z_index = 10
-
-	outline.position = Vector2.ZERO
-	outline.points = glow.polygon
-	outline.closed = true
-	outline.width = 3.0
-	outline.default_color = Color(1.0, 1.0, 1.0, 0.3)
-	outline.antialiased = true
-	outline.visible = true
+	GlowFx.build(glow)
 
 
 func _on_safe_hover_entered():
