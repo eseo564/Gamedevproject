@@ -5,7 +5,7 @@ const GLOW_SIZE = 15.0     # how far the glow spreads, in pixels
 const LAYERS = 15          # more layers = smoother falloff
 const LAYER_ALPHA = 0.015   # brightness of each layer
 
-static func build(glow: Polygon2D):
+static func build(glow: Polygon2D):	
 	glow.color = Color(1, 1, 1, 0)
 	glow.z_index = 10
 

@@ -13,7 +13,10 @@ var padlock_digits = [0, 0, 0, 0]
 
 func _ready():
 	$CanvasLayer/LeftArrow.pressed.connect(_on_left_arrow_pressed)
-	$CanvasLayer/RightArrow.pressed.connect(_on_right_arrow_pressed)
+	$CanvasLayer/RightArrow.pressed.connect(_on_right_arrow_pressed) 
+	
+	setup_arrow_glow($CanvasLayer/LeftArrow)
+	setup_arrow_glow($CanvasLayer/RightArrow)
 
 	$CanvasLayer/LeftArrow.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	$CanvasLayer/RightArrow.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -114,3 +117,28 @@ func _on_padlock_enter():
 		await Dialogue.show_text("Well that didn't work.")
 	
 	
+func setup_arrow_glow(arrow: TextureButton):
+	var mat = arrow.material as ShaderMaterial
+	mat.set_shader_parameter("glow_color", Color(1, 1, 1, 1))
+	mat.set_shader_parameter("glow_strength", 0.0)
+
+	arrow.mouse_entered.connect(func(): _fade_arrow_glow(arrow, 0.75))
+	arrow.mouse_exited.connect(func(): _fade_arrow_glow(arrow, 0.0))
+
+
+func _fade_arrow_glow(arrow: TextureButton, target: float):
+	var mat = arrow.material as ShaderMaterial
+
+	if arrow.has_meta("glow_tween"):
+		var old = arrow.get_meta("glow_tween")
+		if old and old.is_valid():
+			old.kill()
+
+	var tween = arrow.create_tween()
+	arrow.set_meta("glow_tween", tween)
+	tween.tween_method(
+		func(v): mat.set_shader_parameter("glow_strength", v),
+		mat.get_shader_parameter("glow_strength"),
+		target,
+		0.10
+	)
